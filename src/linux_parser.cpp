@@ -149,7 +149,8 @@ std::vector<std::string> LinuxParser::CpuUtilization() {
   string line;
   string key;
   string user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice;
-  
+
+
   std::ifstream stream(kProcDirectory + kStatFilename);
   if (stream.is_open()) {
     std::getline(stream, line);
@@ -291,4 +292,3 @@ long LinuxParser::UpTime(int pid) {
   return time;
 
 }
-
