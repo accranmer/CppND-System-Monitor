@@ -45,6 +45,7 @@ string Process::User() {
   return LinuxParser::User(pid_);
 }
 
+
 bool Process::operator<(Process const& a) const { 
   return a.cpuUtil_ < cpuUtil_ ? true : false;
                                                                 
