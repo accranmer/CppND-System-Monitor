@@ -4,7 +4,7 @@
 float Processor::Utilization() { 
   
   std::vector<std::string> current = LinuxParser::CpuUtilization();
-  int user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice;
+  int user, nice, system, idle, iowait, irq, softirq, steal;
   int totald, idled;
   
   user = stoi(current[0]);
@@ -15,8 +15,6 @@ float Processor::Utilization() {
   irq = stoi(current[5]);
   softirq = stoi(current[6]);
   steal = stoi(current[7]);
-  guest = stoi(current[8]);
-  guest_nice = stoi(current[9]);
   
   PrevIdle = Idle;
   PrevNonIdle = NonIdle;
