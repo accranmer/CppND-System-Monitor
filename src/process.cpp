@@ -14,21 +14,19 @@ using std::vector;
 
 Process::Process(int pid) : pid_(pid) {};
 
-// TODO: Return this process's ID
 int Process::Pid() { 
   return pid_;
 }
 
 long int Process::UpTime() { 
-  return LinuxParser::UpTime(pid_);
+  return LinuxParser::UpTime() - LinuxParser::UpTime(pid_);
 }
 
-// TODO: Return this process's CPU utilization
 float Process::CpuUtilization() { 
   long total_time = LinuxParser::ActiveJiffies(pid_);
   long starttime = LinuxParser::UpTime(pid_);
   long uptime = LinuxParser::UpTime();
-  cpuUtil_ = (float) (100*(float)total_time / (float)(uptime - starttime)); 
+  cpuUtil_ = (float) ((float)total_time / (float)(uptime - starttime)); 
   return cpuUtil_;
   
 }
